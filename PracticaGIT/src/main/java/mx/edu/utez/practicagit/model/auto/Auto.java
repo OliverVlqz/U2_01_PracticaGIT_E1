@@ -11,7 +11,6 @@ import org.springframework.data.annotation.Id;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @Table(name = "auto")
 
 public class Auto {
