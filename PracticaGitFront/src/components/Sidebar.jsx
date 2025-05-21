@@ -40,7 +40,6 @@ const Sidebar = ({ onWidthChange }) => {
 
   return (
     <>
-      {/* Botón hamburguesa */}
       <button
         onClick={toggleSidebar}
         className={`fixed top-2 left-7 z-50 p-2 rounded-md bg-blue-600 text-white shadow-lg 
@@ -50,7 +49,6 @@ const Sidebar = ({ onWidthChange }) => {
         {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
       </button>
 
-      {/* Overlay en móvil */}
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -106,14 +104,7 @@ const Sidebar = ({ onWidthChange }) => {
             onClick={() => {}}
           />
 
-          <div className="absolute bottom-0 w-full p-4 border-t border-gray-700">
-            <NavItem
-              icon={<FiSettings size={20} />}
-              text="Configuración"
-              isOpen={isOpen}
-              onClick={() => {}}
-            />
-          </div>
+          <div className="absolute bottom-0 w-full p-4 border-t border-gray-700"></div>
         </nav>
       </aside>
     </>

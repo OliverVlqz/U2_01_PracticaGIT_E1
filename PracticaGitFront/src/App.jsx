@@ -6,7 +6,6 @@ function App() {
     <>
       <div className="flex min-h-screen bg-white">
         <Sidebar />
-
         <Car />
       </div>
     </>
