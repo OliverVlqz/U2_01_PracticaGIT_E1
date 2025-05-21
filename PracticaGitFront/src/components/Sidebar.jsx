@@ -10,7 +10,7 @@ const Sidebar = () => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      
+       
       // En desktop (>=768px), sidebar visible por defecto
       // En móvil (<768px), sidebar oculto por defecto
       setIsOpen(!mobile);
