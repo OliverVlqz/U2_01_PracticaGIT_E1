@@ -4,9 +4,9 @@ import Sidebar from '../components/Sidebar'
 
 const AppLayout = () => {
   return (
-    <div className="flex">
+   <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 min-h-screen bg-gray-900 text-white ml-20 transition-all duration-300">
+      <div className="flex-1 overflow-auto transition-all duration-300">
         <Outlet />
       </div>
     </div>

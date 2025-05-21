@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import {
   FiMenu,
   FiX,
@@ -9,8 +10,14 @@ import {
 } from "react-icons/fi";
 
 const Sidebar = ({ onWidthChange }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeRoute, setActiveRoute] = useState("");
+
+  useEffect(() => {
+    setActiveRoute(window.location.pathname);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,12 +45,18 @@ const Sidebar = ({ onWidthChange }) => {
     setIsOpen(!isOpen);
   };
 
+   const handleNavigation = (path) => {
+    navigate(path);
+    setActiveRoute(path);
+    if (isMobile) setIsOpen(false); // Cierra sidebar en móvil al navegar
+  };
+
   return (
     <>
       <button
         onClick={toggleSidebar}
-        className={`fixed top-2 left-7 z-50 p-2 rounded-md bg-blue-600 text-white shadow-lg 
-          ${isOpen && !isMobile ? "md:left-64 ml-3" : "md:left-4"} 
+        className={`fixed top-2 left-7 z-80 p-2 rounded-md bg-blue-600 text-white shadow-lg 
+          ${isOpen && !isMobile ? "md:left-48 ml-3" : "md:left-4"} 
           transition-all duration-300`}
       >
         {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -51,7 +64,7 @@ const Sidebar = ({ onWidthChange }) => {
 
       {isMobile && isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          className="fixed inset-0 bg-black bg-opacity-50 z-70"
           onClick={toggleSidebar}
         />
       )}
@@ -60,7 +73,7 @@ const Sidebar = ({ onWidthChange }) => {
       <aside
         className={`bg-gray-800 text-white ${
           isOpen ? "w-64" : "w-0 md:w-20"
-        } fixed h-screen z-40 transition-all duration-300 overflow-hidden 
+        } fixed h-screen z-70 transition-all duration-300 overflow-hidden 
           ${isOpen ? "border-r border-gray-700" : ""}`}
       >
         <div
@@ -69,7 +82,7 @@ const Sidebar = ({ onWidthChange }) => {
           } border-b border-gray-700`}
         >
           {isOpen ? (
-            <h1 className="text-xl font-bold">SISTEMA AUTOMOTRIZ</h1>
+            <h1 className="text-xxl font-bold">SISTEMA AUTOMOTRIZ</h1>
           ) : (
             <span className="text-xl font-bold">SA</span>
           )}
@@ -85,23 +98,25 @@ const Sidebar = ({ onWidthChange }) => {
           <NavItem
             icon={<FiHome size={20} />}
             text="Inicio"
-            active={true}
+            active={activeRoute === "/"}
             isOpen={isOpen}
-            onClick={() => {}}
+            onClick={() => handleNavigation("/")}
           />
 
           <NavItem
             icon={<FiTruck size={20} />}
             text="Automóviles"
+            active={activeRoute === "/cars" || activeRoute.startsWith("/cars")}
             isOpen={isOpen}
-            onClick={() => {}}
+            onClick={() => handleNavigation("/cars")}
           />
 
           <NavItem
             icon={<FiUsers size={20} />}
             text="Proveedores"
+            active={activeRoute === "/providers" || activeRoute.startsWith("/providers")}
             isOpen={isOpen}
-            onClick={() => {}}
+            onClick={() => handleNavigation("/providers")}
           />
 
           <div className="absolute bottom-0 w-full p-4 border-t border-gray-700"></div>

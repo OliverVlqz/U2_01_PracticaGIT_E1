@@ -71,8 +71,8 @@ const AutoModal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-blue-100 bg-opacity-90 z-50">
-      <div className="bg-white w-full max-w-lg rounded-2xl shadow-lg p-8 relative">
+    <div className="fixed inset-0 flex items-center justify-center bg-slate-500/50 z-40">
+      <div className="bg-white w-full max-w-lg rounded-2xl shadow-lg p-8 relative mx-4">
         <FaCar className="absolute top-8 left-10 text-blue-500 w-10 h-10" />
         <button
           onClick={onClose}
