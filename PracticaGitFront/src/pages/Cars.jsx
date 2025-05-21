@@ -1,9 +1,9 @@
 const carImage =
-  "https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_1280.jpg";
+  'https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_1280.jpg'
 
 export default function Cars() {
   return (
-    <div className="min-h-screen bg-white pl-[300px] pr-6 py-6">
+    <div className="min-h-screen bg-white py-6">
       <h1 className="text-4xl font-bold text-center text-purple-800 mb-10 italic">
         Automoviles
       </h1>
@@ -31,5 +31,5 @@ export default function Cars() {
         ))}
       </div>
     </div>
-  );
+  )
 }
