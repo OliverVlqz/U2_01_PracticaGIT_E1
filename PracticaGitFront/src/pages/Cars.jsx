@@ -1,5 +1,5 @@
 const carImage =
-  "https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_1280.jpg"; // Usa una imagen online o cámbiala por una local
+  "https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_1280.jpg";
 
 export default function Cars() {
   return (
