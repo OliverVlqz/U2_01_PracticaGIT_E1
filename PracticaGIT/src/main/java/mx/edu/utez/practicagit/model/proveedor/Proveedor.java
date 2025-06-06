@@ -1,5 +1,6 @@
 package mx.edu.utez.practicagit.model.proveedor;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Proveedor {
     private String correo;
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Auto> automoviles = new ArrayList<>();
 
     public Proveedor getProveedor() {
