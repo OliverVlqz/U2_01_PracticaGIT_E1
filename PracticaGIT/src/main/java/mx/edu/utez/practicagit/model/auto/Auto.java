@@ -28,7 +28,6 @@ public class Auto {
     private String color;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "proveedor_id", nullable = false)
     private Proveedor proveedor;
 

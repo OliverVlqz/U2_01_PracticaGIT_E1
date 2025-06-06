@@ -1,9 +1,19 @@
-import React from "react";
+// ✅ CarInformation.jsx
+import React from 'react'
 
-export default function CarInformation() {
+export default function CarInformation({ auto, onClose }) {
+  if (!auto) return null
+  console.log('Auto details:', auto)
   return (
-    <div className="min-h-screen bg-gray-100 pl-[80px] pr-6 py-6 flex items-center justify-center">
-      <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center w-full max-w-5xl border border-gray-200">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+      <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-10 items-center w-full max-w-5xl border border-gray-200 relative mx-4">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-xl font-bold"
+        >
+          &times;
+        </button>
+
         {/* Imagen del automóvil */}
         <img
           src="https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_1280.jpg"
@@ -22,7 +32,7 @@ export default function CarInformation() {
               <label className="text-gray-400 block mb-1">Modelo</label>
               <input
                 type="text"
-                value="GTX 2023"
+                value={auto.modelo || ''}
                 disabled
                 className="w-full p-3 border border-purple-700 rounded-lg shadow-sm text-gray-700 focus:outline-none"
               />
@@ -32,7 +42,7 @@ export default function CarInformation() {
               <label className="text-gray-400 block mb-1">Marca</label>
               <input
                 type="text"
-                value="Zenvo"
+                value={auto.marca || ''}
                 disabled
                 className="w-full p-3 border border-purple-700 rounded-lg shadow-sm text-gray-700 focus:outline-none"
               />
@@ -42,7 +52,7 @@ export default function CarInformation() {
               <label className="text-gray-400 block mb-1">Color</label>
               <input
                 type="text"
-                value="Plata"
+                value={auto.color || ''}
                 disabled
                 className="w-full p-3 border border-purple-700 rounded-lg shadow-sm text-gray-700 focus:outline-none"
               />
@@ -52,7 +62,7 @@ export default function CarInformation() {
               <label className="text-gray-400 block mb-1">Placa</label>
               <input
                 type="text"
-                value="ABC-1234"
+                value={auto.placa || ''}
                 disabled
                 className="w-full p-3 border border-purple-700 rounded-lg shadow-sm text-gray-700 focus:outline-none"
               />
@@ -62,7 +72,7 @@ export default function CarInformation() {
               <label className="text-gray-400 block mb-1">Proveedor</label>
               <input
                 type="text"
-                value="Jose Antonio López Bustos"
+                value={auto.proveedor?.nombre || ''}
                 disabled
                 className="w-full p-3 border border-purple-700 rounded-lg shadow-sm text-gray-700 focus:outline-none"
               />
@@ -71,5 +81,5 @@ export default function CarInformation() {
         </div>
       </div>
     </div>
-  );
+  )
 }
